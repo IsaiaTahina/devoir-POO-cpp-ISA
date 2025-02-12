@@ -1,43 +1,12 @@
 
-// IsaiaTahina 06*02*2025
+// IsaiaTahina 12*02*2025
 namespace isa
 {
-
-class ComplexeRationnel
-{
-    public:
-        int anum;
-        int aden;
-        int bnum;
-        int bden;
-
-    public:ComplexeRationnel();
-        ~ComplexeRationnel();
-
-        ComplexeRationnel addition(ComplexeRationnel cr);
-        ComplexeRationnel soustraction(ComplexeRationnel cr);
-        ComplexeRationnel division(ComplexeRationnel cr);
-        ComplexeRationnel multiplication(ComplexeRationnel cr);
-
-        void afficher();
-
-        int setanum(int n1);
-        int setaden(int n1);
-        int setbnum(int n1);
-        int setbden(int n1);
-
-        int getanum();
-        int getaden();
-        int getbnum();
-        int getbden();
-};
-
-
 class Complexe
 {
-    private:
-        float x;
-        float y;
+    protected:
+        int x;
+        int y;
 
     public:Complexe();
         ~Complexe();
@@ -58,9 +27,9 @@ class Complexe
 
 class Rationnel
 {
-    private:
-        int num;
-        int den;
+    protected:
+        int p;
+        int q;
 
     public:Rationnel();
         ~Rationnel();
@@ -72,15 +41,46 @@ class Rationnel
 
         void afficher();
 
-        int setNum(int n1);
-        int setDen(int n1);
+        int setp(int n1);
+        int setq(int n1);
 
-        int getNum();
-        int getDen();
+        int getp();
+        int getq();
 };
 
 
-//
+class ComplexeRationnel:public Complexe, public Rationnel
+{
+    public:ComplexeRationnel();
+        ~ComplexeRationnel();
 
+        ComplexeRationnel addition(ComplexeRationnel cr);
+        ComplexeRationnel soustraction(ComplexeRationnel cr);
+        ComplexeRationnel division(ComplexeRationnel cr);
+        ComplexeRationnel multiplication(ComplexeRationnel cr);
+
+        void afficher();
+};
+
+
+class Arithmetic
+{
+    public:
+       static int additionner(int x,int y);
+       static float additionner(float x,int y);
+       static float additionner(int y,float x);
+       static float additionner(float y,float x);
+
+       static Complexe additionner(Complexe x,int y);
+       static Complexe additionner(int y,Complexe x);
+       static ComplexeRationnel additionner(Complexe x,Rationnel y);
+       static ComplexeRationnel additionner(Rationnel y,Complexe x);
+
+       static ComplexeRationnel additionner(ComplexeRationnel cr,Rationnel y);
+       static ComplexeRationnel additionner(Rationnel y,ComplexeRationnel cr);
+
+       static ComplexeRationnel additionner(ComplexeRationnel cr,Complexe z);
+       static ComplexeRationnel additionner(Complexe z ,ComplexeRationnel cr);
+};
 
 }
